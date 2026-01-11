@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Loan Application Review System is an intelligent loan evaluation platform that combines the power of Large Language Models (LLMs) with deterministic verification to provide reliable, auditable loan decisions. The system analyzes 16 key financial factors across 5 categories to make data-driven lending decisions.
+The Loan Application Review System is an intelligent loan evaluation platform that combines the power of Large Language Models (LLMs) with deterministic verification to provide reliable, auditable loan decisions. The system analyzes 16 key financial factors across 6 categories to make data-driven lending decisions.
 
 ## Key Features
 
@@ -58,34 +58,35 @@ Layer 5: Output Generator    → Creates Excel/JSON reports (Pure Python)
 
 ## Evaluation Factors
 
-The system evaluates 16 factors across 5 categories:
+The system evaluates 16 factors across 6 categories:
 
-### 1. Credit Profile (40% weight)
+### 1. Credit Profile
 - Credit Score
 - Payment History
 - Credit Utilization
-- Hard Inquiries
+- Hard Inquiries (24 months)
 
-### 2. Income Stability (20% weight)
+### 2. Income & Employment
 - Employment Status
 - Employment Duration
-- Annual Income
+- Gross Annual Income
 
-### 3. Debt Management (20% weight)
+### 3. Debt & Obligations
 - Debt-to-Income Ratio
-- Monthly Debt Payments
 - Existing Loan Count
 
-### 4. Financial Reserves (10% weight)
-- Liquid Assets
-- Liquid Assets Ratio
+### 4. Assets & Collateral
+- Liquid Assets / Loan Amount Ratio
 - Collateral Offered
 
-### 5. Banking & Documentation (10% weight)
+### 5. Banking & Relationship
 - Bank Relationship
-- NSF Count
-- Cash Flow
-- Document Verification
+- NSF/Overdrafts (12 months)
+- Monthly Cash Flow
+
+### 6. Documentation
+- Document Verification %
+- Identity Verification
 
 ## Decision Rules
 
