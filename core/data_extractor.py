@@ -35,6 +35,7 @@ class ExtractedData:
     
     # Debt Factors
     monthly_debt_payments: float = 0.0
+    monthly_housing_payment: float = 0.0  # Rent or mortgage
     monthly_income: float = 0.0
     dti_ratio: float = 0.0
     existing_loan_count: int = 0
@@ -89,6 +90,10 @@ class DataExtractor:
         info = self._sheet_to_dict(df)
         
         data.applicant_name = info.get("Full Legal Name", "")
+        
+        # Extract monthly housing payment (rent or mortgage)
+        housing_payment = info.get("Monthly Rent/Mortgage", "0")
+        data.monthly_housing_payment = self._parse_money(housing_payment)
     
     def _extract_credit_report(self, data: ExtractedData):
         """Extract credit report data."""
@@ -300,9 +305,10 @@ class DataExtractor:
     
     def _calculate_derived(self, data: ExtractedData):
         """Calculate derived fields."""
-        # DTI Ratio
+        # DTI Ratio - includes housing payment (rent/mortgage) + other debt payments
         if data.monthly_income > 0:
-            data.dti_ratio = round((data.monthly_debt_payments / data.monthly_income) * 100, 1)
+            total_monthly_obligations = data.monthly_debt_payments + data.monthly_housing_payment
+            data.dti_ratio = round((total_monthly_obligations / data.monthly_income) * 100, 1)
         
         # Liquid Assets Ratio
         if data.loan_amount > 0:

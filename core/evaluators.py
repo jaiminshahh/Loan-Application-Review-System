@@ -83,19 +83,29 @@ Factor: {factor_name}
 Value: {value}
 Criteria: {criteria}
 
-Your task: Compare the value to the criteria using STRICT MATHEMATICAL LOGIC.
-- Perform exact numeric comparisons (>, <, >=, <=, ==)
-- Reference the specific thresholds in the criteria
-- Be precise with percentages and numbers
-- Base your decision on whether the value meets the PASS/FAIL thresholds
+CRITICAL INSTRUCTIONS - READ CAREFULLY:
+1. For "≤" (less than or equal) criteria: A SMALLER value is BETTER and should PASS
+   - Example: If criteria is "≤36%", then 8.2% PASSES because 8.2 < 36
+   - Example: If criteria is "≤36%", then 50% FAILS because 50 > 36
+
+2. For "≥" (greater than or equal) criteria: A LARGER value is BETTER and should PASS
+   - Example: If criteria is "≥100%", then 299% PASSES because 299 > 100
+   - Example: If criteria is "≥100%", then 50% FAILS because 50 < 100
+
+3. Extract the numeric value and compare it STEP BY STEP:
+   Step 1: What is the numeric value? (e.g., 8.2)
+   Step 2: What is the threshold? (e.g., 36)
+   Step 3: What is the comparison operator? (e.g., ≤ means "should be less than or equal")
+   Step 4: Does the value satisfy the condition? (e.g., 8.2 ≤ 36? YES → PASS)
 
 Respond in strict JSON format with these keys:
 - decision: "PASS", "REVIEW", or "FAIL" based on threshold comparison
 - risk_score: number 0-100 (higher = more risky). Use lower scores (0-30) for PASS, medium (30-70) for REVIEW, higher (70-100) for FAIL
 - confidence: number 0-1 (0 = low confidence, 1 = high confidence). Use high confidence (0.8-1.0) when the comparison is clear
-- notes: brief justification that explicitly references the numeric comparison you made
+- notes: brief justification that explicitly shows the comparison (e.g., "8.2% ≤ 36% threshold: PASS")
 
-Example: {{ "decision":"PASS", "risk_score":15, "confidence":0.95, "notes":"Credit score 720 >= 700 threshold, clearly passes" }}
+Example 1: {{ "decision":"PASS", "risk_score":15, "confidence":0.95, "notes":"8.2% ≤ 36% threshold: clearly passes" }}
+Example 2: {{ "decision":"PASS", "risk_score":10, "confidence":0.98, "notes":"299.5% ≥ 100% threshold: well above minimum" }}
 
 Your response (JSON only):"""
         
@@ -112,6 +122,11 @@ Your task: Evaluate this factor considering:
 - Patterns and trends (e.g., high utilization might indicate financial stress)
 - Contextual risk implications (not just threshold checking)
 - What this value suggests about the applicant's financial behavior
+
+IMPORTANT: First verify the numeric comparison is correct:
+- For DTI ratio: LOWER is BETTER (8.2% is excellent, 50% is concerning)
+- For Asset ratios: HIGHER is BETTER (299% is excellent, 20% is concerning)
+- Always check if the value meets or exceeds the threshold in the correct direction
 
 Respond in strict JSON format with these keys:
 - decision: "PASS", "REVIEW", or "FAIL" based on risk assessment
@@ -130,6 +145,11 @@ Your response (JSON only):"""
 Factor: {factor_name}
 Value: {value}
 Criteria: {criteria}
+
+CRITICAL: Verify mathematical logic before making recommendation:
+- DTI (Debt-to-Income): LOWER percentages are BETTER (5% is excellent, 50% is high risk)
+- Asset Ratios: HIGHER percentages are BETTER (300% is excellent, 20% is concerning)
+- Always double-check: does this value meet the pass threshold?
 
 Your task: Make a clear decision recommendation by:
 - Considering both the numeric thresholds AND practical lending implications
