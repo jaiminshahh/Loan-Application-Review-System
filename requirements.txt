@@ -1,0 +1,7 @@
+# Core
+langchain-ollama>=0.2.0
+pandas>=2.0.0
+openpyxl>=3.1.5
+
+# Utilities
+rich>=13.0.0

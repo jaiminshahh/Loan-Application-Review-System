@@ -1,0 +1,205 @@
+{
+  "generated_at": "2026-01-11T14:18:41.221527",
+  "applicant": {
+    "name": "Pratik Sharma",
+    "loan_amount": 25000.0,
+    "loan_term_months": 36,
+    "loan_purpose": "Home Renovation"
+  },
+  "extracted_data": {
+    "credit_score": 685,
+    "payment_history_pct": 97.2,
+    "credit_utilization_pct": 14.3,
+    "hard_inquiries": 4,
+    "employment_status": "Full-Time",
+    "employment_duration_years": 4.9,
+    "annual_income": 146420.0,
+    "monthly_income": 12201.67,
+    "monthly_debt_payments": 1005.0,
+    "dti_ratio": 8.2,
+    "existing_loan_count": 5,
+    "liquid_assets": 74870.0,
+    "liquid_assets_ratio": 299.5,
+    "bank_relationship_years": 6.4,
+    "nsf_count": 1,
+    "monthly_cash_flow": 1630.0,
+    "docs_verified_pct": 90.9,
+    "identity_verified": true
+  },
+  "evaluations": [
+    {
+      "factor_id": "credit_score",
+      "factor_name": "Credit Score",
+      "category": "Credit Profile",
+      "value": "Score: 685",
+      "status": "REVIEW",
+      "weight": 0.2,
+      "criteria": "\u2265700: Pass | 650-699: Review | <650: Fail",
+      "notes": "Credit score is 685, which falls within the 650-699 range."
+    },
+    {
+      "factor_id": "payment_history",
+      "factor_name": "Payment History",
+      "category": "Credit Profile",
+      "value": "97.2% on-time",
+      "status": "REVIEW",
+      "weight": 0.1,
+      "criteria": "\u226598%: Pass | 95-97.9%: Review | <95%: Fail",
+      "notes": "Payment history value of 97.2 falls within the 95-97.9% range, requiring a review."
+    },
+    {
+      "factor_id": "credit_utilization",
+      "factor_name": "Credit Utilization",
+      "category": "Credit Profile",
+      "value": "14.3% used",
+      "status": "REVIEW",
+      "weight": 0.05,
+      "criteria": "\u226430%: Pass | 31-50%: Review | >50%: Fail",
+      "notes": "Credit utilization is above 30% but below 50%."
+    },
+    {
+      "factor_id": "hard_inquiries",
+      "factor_name": "Hard Inquiries (24mo)",
+      "category": "Credit Profile",
+      "value": "4 inquiries",
+      "status": "REVIEW",
+      "weight": 0.03,
+      "criteria": "0-2: Pass | 3-5: Review | >5: Fail",
+      "notes": "Number of hard inquiries exceeds the 2-inquiry limit."
+    },
+    {
+      "factor_id": "employment_status",
+      "factor_name": "Employment Status",
+      "category": "Income & Employment",
+      "value": "Full-Time",
+      "status": "PASS",
+      "weight": 0.1,
+      "criteria": "Full-Time: Pass | Part-Time/Contract: Review | Unemployed: Fail",
+      "notes": "Employment status is full-time."
+    },
+    {
+      "factor_id": "employment_duration",
+      "factor_name": "Employment Duration",
+      "category": "Income & Employment",
+      "value": "4.9 years",
+      "status": "PASS",
+      "weight": 0.05,
+      "criteria": "\u22652 years: Pass | 1-2 years: Review | <1 year: Fail",
+      "notes": "Employment duration is greater than or equal to 2 years."
+    },
+    {
+      "factor_id": "annual_income",
+      "factor_name": "Gross Annual Income",
+      "category": "Income & Employment",
+      "value": "$146,420",
+      "status": "PASS",
+      "weight": 0.15,
+      "criteria": "\u2265$50K: Pass | $30-50K: Review | <$30K: Fail",
+      "notes": "Gross Annual Income of $146,420.0 meets or exceeds the minimum requirement of $50K."
+    },
+    {
+      "factor_id": "dti_ratio",
+      "factor_name": "Debt-to-Income Ratio",
+      "category": "Debt & Obligations",
+      "value": "8.2%",
+      "status": "REVIEW",
+      "weight": 0.15,
+      "criteria": "\u226436%: Pass | 37-43%: Review | >43%: Fail",
+      "notes": "Debt-to-Income Ratio is between 37% and 43%."
+    },
+    {
+      "factor_id": "existing_loans",
+      "factor_name": "Existing Loan Count",
+      "category": "Debt & Obligations",
+      "value": "5 active loans",
+      "status": "REVIEW",
+      "weight": 0.03,
+      "criteria": "0-2: Pass | 3-4: Review | >4: Fail",
+      "notes": "Existing loan count is 5, which falls into the \"Review\" category according to the criteria."
+    },
+    {
+      "factor_id": "liquid_assets_ratio",
+      "factor_name": "Liquid Assets / Loan Amount",
+      "category": "Assets & Collateral",
+      "value": "299.5% of loan amount",
+      "status": "PASS",
+      "weight": 0.05,
+      "criteria": "\u2265100%: Pass | 50-99%: Review | <50%: Fail",
+      "notes": "Liquid assets are sufficient to cover the loan amount."
+    },
+    {
+      "factor_id": "collateral_offered",
+      "factor_name": "Collateral Offered",
+      "category": "Assets & Collateral",
+      "value": "No",
+      "status": "REVIEW",
+      "weight": 0.02,
+      "criteria": "Adequate: Pass | Partial/None: Review",
+      "notes": "No collateral offered."
+    },
+    {
+      "factor_id": "bank_relationship",
+      "factor_name": "Bank Relationship",
+      "category": "Banking & Relationship",
+      "value": "6.4 years",
+      "status": "PASS",
+      "weight": 0.03,
+      "criteria": "\u22653 years: Pass | 1-3 years: Review | <1 year: Fail",
+      "notes": "Bank relationship value of 6.4 meets or exceeds the \u22653 years threshold."
+    },
+    {
+      "factor_id": "nsf_count",
+      "factor_name": "NSF/Overdrafts (12mo)",
+      "category": "Banking & Relationship",
+      "value": "1 in 12 months",
+      "status": "PASS",
+      "weight": 0.02,
+      "criteria": "0: Pass | 1-2: Review | >2: Fail",
+      "notes": "No NSF/Overdrafts in the past 12 months."
+    },
+    {
+      "factor_id": "monthly_cash_flow",
+      "factor_name": "Monthly Cash Flow",
+      "category": "Banking & Relationship",
+      "value": "$+1,630/month",
+      "status": "PASS",
+      "weight": 0.02,
+      "criteria": "Positive: Pass | Zero: Review | Negative: Fail",
+      "notes": "Monthly cash flow is positive, meeting the criteria."
+    },
+    {
+      "factor_id": "docs_verified_pct",
+      "factor_name": "Document Verification %",
+      "category": "Documentation",
+      "value": "90.9% verified",
+      "status": "REVIEW",
+      "weight": 0.03,
+      "criteria": "100%: Pass | 90-99%: Review | <90%: Fail",
+      "notes": "Document Verification % value of 90.9 falls within the 90-99% range, indicating a need for further review."
+    },
+    {
+      "factor_id": "identity_verified",
+      "factor_name": "Identity Verification",
+      "category": "Documentation",
+      "value": "Verified",
+      "status": "PASS",
+      "weight": 0.02,
+      "criteria": "Full: Pass | Partial: Review | Failed: Fail",
+      "notes": "Identity verification was successful."
+    }
+  ],
+  "summary": {
+    "total_factors": 16,
+    "pass_count": 8,
+    "review_count": 8,
+    "fail_count": 0,
+    "weighted_score": 71.0
+  },
+  "decision": {
+    "result": "MANUAL_REVIEW",
+    "rule_applied": "R04",
+    "rule_description": "No failures, moderate score (60-79%)",
+    "risk_level": "MEDIUM-LOW",
+    "recommendation": "Manual underwriter review required. Score: 71.0%. Key factors to review: Credit Score, Payment History, Credit Utilization. Consider: (1) Additional documentation, (2) Higher rate for risk, (3) Reduced loan amount, or (4) Co-signer requirement."
+  }
+}
