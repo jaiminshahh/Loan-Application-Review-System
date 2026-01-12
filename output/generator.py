@@ -110,7 +110,7 @@ class OutputGenerator:
                 f"{eval.confidence:.2f}",
                 source_display,
                 f"{eval.weight * 100:.0f}%",
-                eval.notes[:60] + "..." if len(eval.notes) > 60 else eval.notes
+                eval.notes  # Full notes without truncation
             ]
             
             for col, value in enumerate(values, 1):
@@ -137,7 +137,9 @@ class OutputGenerator:
                     if eval.disagreement:
                         cell.font = Font(bold=True, color="FF0000")
             
-            ws.row_dimensions[row].height = 35
+            # Auto-adjust row height based on notes length (minimum 35, increase for longer notes)
+            notes_lines = len(eval.notes) / 60  # Approximate lines needed (60 chars per line)
+            ws.row_dimensions[row].height = max(35, min(150, 35 + notes_lines * 15))
             row += 1
         
         # Summary section
@@ -207,8 +209,8 @@ class OutputGenerator:
         cell.border = self.border
         ws.row_dimensions[row].height = 50
         
-        # Column widths
-        widths = [20, 20, 10, 8, 8, 12, 8, 45]
+        # Column widths (increased Notes column from 45 to 60 for better visibility)
+        widths = [20, 20, 10, 8, 8, 12, 8, 60]
         for i, width in enumerate(widths, 1):
             ws.column_dimensions[get_column_letter(i)].width = width
         
